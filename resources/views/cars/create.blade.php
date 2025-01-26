@@ -29,7 +29,11 @@
             <label for="data_lancamento" class="form-label">Data de Lançamento</label>
             <input type="date" class="form-control" id="data_lancamento" name="data_lancamento" value="{{ $car->data_lancamento ?? '' }}" required>
         </div>
+
         <button type="submit" class="btn btn-success">{{ isset($car) ? 'Atualizar' : 'Cadastrar' }}</button>
+
+        <!-- Botão para voltar à página principal -->
+        <a href="{{ url('cars') }}" class="btn btn-primary ml-2">Voltar para a Página Principal</a>
     </form>
 </div>
 @endsection
