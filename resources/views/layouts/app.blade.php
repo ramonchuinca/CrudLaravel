@@ -24,6 +24,31 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <style>
+        body {
+            background-color: #000;
+            background-image: url('caminho/para/sua-imagem.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        footer{
+            color: white
+        }
+
+        .navbar a{
+            position: relative;
+            left:15vh;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+    </style>
+
 </body>
 </html>
 

@@ -1,8 +1,12 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
-    <h1>Lista de Carros</h1>
+
+<h1
+style="border: 2px solid white; color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) font-weight: bold;
+border-radius:10px; text-align: center;">
+Lista de Carros</h1>
+
     <a href="{{ route('cars.create') }}" class="btn btn-primary mb-3">Criar Novo Carro</a>
     <table class="table">
         <thead>
