@@ -15,5 +15,6 @@ class Car extends Model
         'ano',
         'cotacao',
         'data_lancamento',
+        'imagem',
     ];
 }

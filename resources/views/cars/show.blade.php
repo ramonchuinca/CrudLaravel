@@ -12,7 +12,7 @@
     <div class="row mb-4">
         <div class="col-md-6">
             @if ($car->imagem)
-                <img src="{{ asset('images/' . $car->imagem) }}" alt="Imagem do Carro" class="img-fluid" />
+                <img src="{{ asset('storage/' . $car->imagem) }}" alt="Imagem do Carro" class="img-fluid" />
             @else
                 <p style="color: white">Sem imagem disponível</p>
             @endif
