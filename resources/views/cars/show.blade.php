@@ -1,19 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Carro</title>
-</head>
-<body>
-    <h1>Detalhes do Carro</h1>
+@extends('layouts.app')
 
-    <p><strong>Nome:</strong> {{ $car->nome }}</p>
-    <p><strong>Marca:</strong> {{ $car->marca }}</p>
-    <p><strong>Ano:</strong> {{ $car->ano }}</p>
-    <p><strong>Cotação:</strong> R$ {{ number_format($car->cotacao, 2, ',', '.') }}</p>
-    <p><strong>Data de Lançamento:</strong> {{ $car->data_lancamento }}</p>
+@section('content')
+<div class="container">
+    <h1
+        style="border: 2px solid white; color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); font-weight: bold;
+        border-radius:10px; text-align: center;">
+        Detalhes do Carro: {{ $car->nome }}
+    </h1>
 
-    <a href="{{ route('cars.index') }}">Voltar</a>
-</body>
-</html>
+    <!-- Exibir Imagem do Carro -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            @if ($car->imagem)
+                <img src="{{ asset('images/' . $car->imagem) }}" alt="Imagem do Carro" class="img-fluid" />
+            @else
+                <p style="color: white">Sem imagem disponível</p>
+            @endif
+        </div>
+
+        <!-- Detalhes do Carro -->
+        <div class="col-md-6">
+            <ul class="list-unstyled">
+                <li><strong>Nome:</strong> {{ $car->nome }}</li>
+                <li><strong>Marca:</strong> {{ $car->marca }}</li>
+                <li><strong>Ano:</strong> {{ $car->ano }}</li>
+                <li><strong>Cotação:</strong> R$ {{ number_format($car->cotacao, 2, ',', '.') }}</li>
+                <li><strong>Data de Lançamento:</strong> {{ $car->data_lancamento }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Botão para voltar à lista de carros -->
+    <a href="{{ route('cars.index') }}" class="btn btn-primary">Voltar para a Lista de Carros</a>
+</div>
+
+<style>
+    .list-unstyled{
+        color: white
+    }
+</style>
+@endsection
