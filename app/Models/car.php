@@ -17,4 +17,10 @@ class Car extends Model
         'data_lancamento',
         'imagem',
     ];
+
+    public function marcas()
+    {
+        return $this->belongsTo(Marcas::class);
+    }
+
 }
