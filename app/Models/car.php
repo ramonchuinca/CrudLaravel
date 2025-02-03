@@ -16,6 +16,7 @@ class Car extends Model
         'cotacao',
         'data_lancamento',
         'imagem',
+        'marca_id',
     ];
 
     public function marcas()

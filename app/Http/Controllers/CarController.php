@@ -37,17 +37,23 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nome' => 'required|string|max:255',
-            'marca' => 'required|string|max:255',
-            'ano' => 'required|integer|min:1900|max:' . date('Y'),
-            'cotacao' => 'required|numeric|min:0',
+        $request->validate([
+            'nome' => 'required|string',
+            'marca_id' => 'required|exists:marcas,id', // Adicionando marca_id
+            'ano' => 'required|integer',
+            'cotação' => 'required|numeric',
             'data_lancamento' => 'required|date',
         ]);
 
-        Car::create($validated);
+        Car::create([
+            'nome' => $request->nome,
+            'marca_id' => $request->marca_id, // Adicionando aqui
+            'ano' => $request->ano,
+            'cotação' => $request->cotação,
+            'data_lancamento' => $request->data_lancamento,
+        ]);
 
-        return redirect()->route('cars.index')->with('success','Carro cadastrado com sucesso!');
+        return response()->json(['message' => 'Carro criado com sucesso!']);
     }
 
     /**
