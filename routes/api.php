@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/cars', [CarController::class, 'store']);
 
 Route::prefix('cars')->group(function () { # http://localhost:8000/api/cars
-    Route::get('/', [CarController::class, 'index']); // Listar todos os carros
+    Route::get('v2', [CarController::class, 'index']); // Listar todos os carros
     Route::post('v1', [CarController::class, 'store']); // Criar um novo carro
     Route::get('{id}', [CarController::class, 'show']); // Exibir detalhes de um carro
     Route::put('{id}', [CarController::class, 'update']); // Atualizar um carro

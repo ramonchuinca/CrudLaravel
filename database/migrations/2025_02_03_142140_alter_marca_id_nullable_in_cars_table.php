@@ -13,10 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('cars', function (Blueprint $table) {
-            //
-        });
+        if (!Schema::hasTable('marcas')) { // Verifica se a tabela já existe
+            Schema::create('marcas', function (Blueprint $table) {
+                $table->id();
+                $table->string('nome');
+                $table->timestamps();
+            });
+        }
     }
+
+
 
     /**
      * Reverse the migrations.
