@@ -12,9 +12,8 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $cars = Car::all();
+    public function index() {
+        $cars = Car::with('marca')->get();
         return view('cars.index', compact('cars'));
     }
 

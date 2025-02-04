@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('marcas', function (Blueprint $table) {
             $table->id();
-            $table->string('bacground_color');
+            $table->string('nome');
             $table->timestamps();
         });
     }
