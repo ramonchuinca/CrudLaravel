@@ -9,7 +9,7 @@ class Car extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'nome','marca','ano','cotacao','data_lancamento','marca_id',];
+    protected $fillable = [ 'nome','marca_id','ano','cotacao','data_lancamento',];
 
     public function marca()
     {

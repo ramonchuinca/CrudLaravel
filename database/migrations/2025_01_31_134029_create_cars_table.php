@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('cars',function (Blueprint $table){
             $table->id();
-            $table->foreignId('marca_id')->nullable()->change();
+            $table->foreignId('marca_id')->nullable()->constrained('marcas')->onDelete('cascade');
             $table->string('nome');
-            $table->string('marca');
             $table->year('ano');
             $table->decimal('cotacao',10,2);
             $table->date('data_lancamento');

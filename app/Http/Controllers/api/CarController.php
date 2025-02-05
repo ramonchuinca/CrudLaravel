@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
+use App\Models\Marca;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -30,15 +31,22 @@ class CarController extends Controller
 
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
-            'marca' => 'required|string|max:255',
+            // 'marca_id' => 'required|exists:marcas,id|',
+            'marca' => 'required|exists:marcas,nome',
             'ano' => 'required|integer',
             'cotacao' => 'required|numeric',
             'data_lancamento' => 'required|date',
 
         ]);
 
-        // Salvar a imagem, se existir
+        $array = [
+            'Valor 1',
+            'Valor 2',
+            'Valor 3',
+        ];
 
+        // Salvar a imagem, se existir
+        $marca = Marca::where('nome',$validatedData['marca'])->get()[0];
 
         $car = Car::create($validatedData);
 
