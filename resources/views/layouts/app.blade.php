@@ -27,6 +27,45 @@
 
 
 
+
+        <!-- Outros scripts do projeto -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const marcaSelect = document.getElementById("marca");
+    if (!marcaSelect) return; // Evita erro caso a página não tenha esse elemento
+
+    axios.get("{{ route('marcas.index') }}")
+        .then(response => {
+            const marcas = response.data;
+            marcas.forEach(marca => {
+                const option = document.createElement("option");
+                option.value = marca.id;
+                option.textContent = marca.nome;
+
+                if ("{{ $car->marca ?? '' }}" == marca.id) {
+                    option.selected = true;
+                }
+
+                marcaSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error("Erro ao buscar marcas:", error));
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <style>
         body {
             background-color: #000;

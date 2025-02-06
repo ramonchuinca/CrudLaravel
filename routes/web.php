@@ -3,7 +3,7 @@
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MarcaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,4 +20,8 @@ Route::get('/', function () {
 });
 
 Route::resource('cars', CarController::class);
+
+
+Route::get('/marcas', [MarcaController::class, 'index'])->name('marcas.index');
+
 

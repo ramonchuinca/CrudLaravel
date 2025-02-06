@@ -9,11 +9,13 @@ class Car extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'nome','marca_id','ano','cotacao','data_lancamento',];
+    protected $table = [ 'cars'];
 
     public function marca()
     {
         return $this->belongsTo(Marca::class, 'marca_id');
     }
+
+
 }
 

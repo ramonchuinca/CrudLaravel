@@ -28,3 +28,6 @@ Route::prefix('cars')->group(function () { # http://localhost:8000/api/cars
     Route::put('{id}', [CarController::class, 'update']); // Atualizar um carro
     Route::delete('{id}', [CarController::class, 'destroy']); // Excluir um carro
 });
+
+
+Route::get('/marca/{id}/cars', [CarController::class, 'listarCarrosPorMarca']);

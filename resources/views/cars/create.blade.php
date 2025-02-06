@@ -15,7 +15,9 @@
         </div>
         <div class="mb-3" style="color: white">
             <label for="marca" class="form-label">Marca</label>
-            <input type="text" class="form-control" id="marca" name="marca" value="{{ $car->marca ?? '' }}" required>
+            <select class="form-control" id="marca" name="marca" required>
+                <option value="">Selecione uma marca</option>
+            </select>
         </div>
         <div class="mb-3" style="color: white">
             <label for="ano" class="form-label">Ano</label>
@@ -36,4 +38,71 @@
         <a href="{{ url('cars') }}" class="btn btn-primary ml-2">Voltar para a Página Principal</a>
     </form>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const marcaSelect = document.getElementById("marca");
+
+    axios.get("{{ route('marcas.index') }}")  // Ajuste para a rota correta
+        .then(response => {
+            const marcas = response.data; // Supondo que o backend retorna um JSON com as marcas
+            marcas.forEach(marca => {
+                const option = document.createElement("option");
+                option.value = marca.id;
+                option.textContent = marca.nome;
+
+                // Se estiver editando um carro, definir a marca correta
+                if ("{{ $car->marca ?? '' }}" == marca.id) {
+                    option.selected = true;
+                }
+
+                marcaSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error("Erro ao buscar marcas:", error));
+});
+</script>
+
+
+
+
+<script>
+    const marcasUrl = "{{ route('marcas.index') }}";
+    console.log("URL das marcas:", marcasUrl);
+</script>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const marcaSelect = document.getElementById("marca");
+
+        axios.get("{{ route('marcas.index') }}") // Obtém a lista de marcas do backend
+            .then(response => {
+                const marcas = response.data; // Supondo que o backend retorna JSON com marcas
+                marcas.forEach(marca => {
+                    const option = document.createElement("option");
+                    option.value = marca.id;
+                    option.textContent = marca.nome;
+
+                    // Se estiver editando um carro, define a marca correta
+                    if ("{{ $car->marca ?? '' }}" == marca.id) {
+                        option.selected = true;
+                    }
+
+                    marcaSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error("Erro ao buscar marcas:", error));
+    });
+</script>
+
+
+
 @endsection

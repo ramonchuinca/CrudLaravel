@@ -16,8 +16,10 @@ class CarController extends Controller
      */
     public function index()
     {
-       return response()->json(Car::with('marca')->get());;
+        $cars = Car::with('marca')->get();
+        return response()->json($cars, 200);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -38,15 +40,6 @@ class CarController extends Controller
             'data_lancamento' => 'required|date',
 
         ]);
-
-        $array = [
-            'Valor 1',
-            'Valor 2',
-            'Valor 3',
-        ];
-
-        // Salvar a imagem, se existir
-        $marca = Marca::where('nome',$validatedData['marca'])->get()[0];
 
         $car = Car::create($validatedData);
 
@@ -124,4 +117,21 @@ class CarController extends Controller
 
         return response()->json(['message' => 'Carro excluído com sucesso!']);
     }
+
+    public function listarCarrosPorMarca($id)
+{
+    $cars = Car::where('marca_id', $id)->get();
+
+    if ($cars->isEmpty()) {
+        return response()->json(['message' => 'Nenhum carro encontrado para esta marca'], 404);
+    }
+
+    return response()->json($cars, 200);
+}
+
+
+
+
+
+
 }
