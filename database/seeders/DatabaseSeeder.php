@@ -9,8 +9,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            MarcasSeeder::class, // Primeiro, insere marcas
             CarroSeeder::class,   // Depois, insere os carros
+            MarcasSeeder::class, // Primeiro, insere marcas
         ]);
     }
 }

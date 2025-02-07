@@ -10,6 +10,8 @@ class CarroSeeder extends Seeder
 {
     public function run()
     {
+
+
         // Criar uma marca
         $marca = Marca::firstOrCreate(['nome' => 'Toyota']);
 
