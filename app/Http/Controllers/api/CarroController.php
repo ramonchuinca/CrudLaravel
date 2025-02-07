@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Car;
+use App\Models\Carro;
 use App\Models\Marca;
 use Illuminate\Http\Request;
 
-class CarController extends Controller
+class CarroController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::with('marca')->get();
-        return response()->json($cars, 200);
+        $carro = Carro::with('marca')->get();
+        return response()->json($carro, 200);
     }
 
 
@@ -41,9 +41,9 @@ class CarController extends Controller
 
         ]);
 
-        $car = Car::create($validatedData);
+        $carro = Carro::create($validatedData);
 
-     return response()->json(['message' => 'Carro criado com sucesso!', 'car' => $car], 201);
+     return response()->json(['message' => 'Carro criado com sucesso!', 'carro' => $carro], 201);
 
     }
     /**
@@ -54,13 +54,13 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        $car = Car::find($id);
+        $carro = Carro::find($id);
 
-        if (!$car) {
+        if (!$carro) {
             return response()->json(['message' => 'Carro não encontrado'], 404);
         }
 
-        return response()->json($car);
+        return response()->json($carro);
     }
 
     /**
@@ -72,10 +72,10 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $car = Car::find($id);
-        ;
+        $carro = Carro::find($id);
 
-        if (!$car) {
+
+        if (!$carro) {
             return response()->json(['message' => 'Carro não encontrado'], 404);
         }
 
@@ -94,9 +94,9 @@ class CarController extends Controller
             $validatedData['imagem'] = $filePath;
         }
 
-        $car->update($validatedData);
+        $carro->update($validatedData);
 
-        return response()->json(['message' => 'Carro atualizado com sucesso!', 'car' => $car]);
+        return response()->json(['message' => 'Carro atualizado com sucesso!', 'carro' => $carro]);
     }
 
     /**
@@ -107,26 +107,26 @@ class CarController extends Controller
      */
     public function destroy($id)
     {
-        $car = Car::find($id);
+        $carro = Carro::find($id);
 
-        if (!$car) {
+        if (!$carro) {
             return response()->json(['message' => 'Carro não encontrado'], 404);
         }
 
-        $car->delete();
+        $carro->delete();
 
         return response()->json(['message' => 'Carro excluído com sucesso!']);
     }
 
     public function listarCarrosPorMarca($id)
 {
-    $cars = Car::where('marca_id', $id)->get();
+    $carros = Carro::where('marca_id', $id)->get();
 
-    if ($cars->isEmpty()) {
+    if ($carros->isEmpty()) {
         return response()->json(['message' => 'Nenhum carro encontrado para esta marca'], 404);
     }
 
-    return response()->json($cars, 200);
+    return response()->json($carros, 200);
 }
 
 

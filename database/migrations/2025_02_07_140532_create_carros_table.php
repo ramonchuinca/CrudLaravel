@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cars',function (Blueprint $table){
+        Schema::create('carros', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('marca_id')->nullable()->constrained('marcas')->onDelete('cascade');
             $table->string('nome');
+            $table->foreignId('marca_id')->nullable()->constrained('marcas')->onDelete('cascade');
             $table->year('ano');
             $table->decimal('cotacao',10,2);
             $table->date('data_lancamento');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cars');
+        Schema::dropIfExists('carros');
     }
 };

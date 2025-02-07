@@ -4,9 +4,9 @@
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Marca;
-use App\Models\Car;
+use App\Models\Carro;
 
-class CarSeeder extends Seeder
+class CarroSeeder extends Seeder
 {
     public function run()
     {
@@ -14,7 +14,7 @@ class CarSeeder extends Seeder
         $marca = Marca::firstOrCreate(['nome' => 'Toyota']);
 
         // Criar carros associados a essa marca
-        Car::create([
+        Carro::create([
             'nome' => 'Corolla',
             'marca_id' => $marca->id,
             'ano' => 2023,
@@ -22,8 +22,23 @@ class CarSeeder extends Seeder
             'data_lancamento' => '2023-01-01'
         ]);
 
-        Car::create([
+        Carro::create([
             'nome' => 'Hilux',
+            'marca_id' => $marca->id,
+            'ano' => 2024,
+            'cotacao' => 250000,
+            'data_lancamento' => '2024-02-01'
+        ]);
+
+        Carro::create([
+            'nome' => 'uno mile',
+            'marca_id' => $marca->id,
+            'ano' => 2024,
+            'cotacao' => 250000,
+            'data_lancamento' => '2024-02-01'
+        ]);
+        Carro::create([
+            'nome' => 'S10',
             'marca_id' => $marca->id,
             'ano' => 2024,
             'cotacao' => 250000,
