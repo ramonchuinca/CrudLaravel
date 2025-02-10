@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Car;
+use App\Models\Carro;
 
 class CarController extends Controller
 {
@@ -13,8 +13,8 @@ class CarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $cars = Car::with('marca')->get();
-        return view('cars.index', compact('cars'));
+        $cars = Carro::with('marca')->get();
+        return view('carro.index', compact('carro'));
     }
 
 
@@ -25,7 +25,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('cars.create');
+        return view('carro.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class CarController extends Controller
             'data_lancamento' => 'required|date',
         ]);
 
-        Car::create([
+        Carro::create([
             'nome' => $request->nome,
             'marca_id' => $request->marca_id, // Adicionando aqui
             'ano' => $request->ano,
@@ -65,12 +65,12 @@ class CarController extends Controller
     {
         {
             // Buscar o carro pelo ID
-            $car = Car::findOrFail($id);
+            $car = Carro::findOrFail($id);
 
 
 
             // Retornar a view com os detalhes do carro
-            return view('cars.show', compact('car'));
+            return view('carro.show', compact('carro'));
         }
     }
 
@@ -82,8 +82,8 @@ class CarController extends Controller
      */
     public function edit($id)
     {
-        $car = Car::findOrFail($id);
-        return view('cars.create', compact('car')); // Reutiliza a mesma view
+        $car = Carro::findOrFail($id);
+        return view('carro.create', compact('carro')); // Reutiliza a mesma view
     }
 
     /**
@@ -95,7 +95,7 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
 {
-    $car = Car::findOrFail($id);
+    $car = Carro::findOrFail($id);
 
     // Validação
     $validated = $request->validate([
@@ -108,7 +108,7 @@ class CarController extends Controller
 
         $car->update($validated);
 
-        return redirect()->route('cars.index')->with('success', 'Carro atualizado com sucesso!');
+        return redirect()->route('carro.index')->with('success', 'Carro atualizado com sucesso!');
     }
 
     /**
@@ -117,10 +117,10 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Car $car)
+    public function destroy(Carro $car)
     {
             $car->delete();
 
-    return redirect()->route('cars.index')->with('success', 'Carro excluído com sucesso!');
+    return redirect()->route('carro.index')->with('success', 'Carro excluído com sucesso!');
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->foreignId('marca_id')->nullable()->constrained('marcas')->onDelete('cascade');
-            $table->year('ano');
+            $table->string('ano')->nullable(); // Permite valores nulos
             $table->decimal('cotacao',10,2);
             $table->date('data_lancamento');
             $table->timestamps();

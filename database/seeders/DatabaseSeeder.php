@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CarroSeeder::class,   // Depois, insere os carros
-            MarcasSeeder::class, // Primeiro, insere marcas
+            MarcaSeeder::class, // Primeiro, insere marcas
         ]);
     }
 }

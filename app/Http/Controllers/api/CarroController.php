@@ -16,7 +16,7 @@ class CarroController extends Controller
      */
     public function index()
     {
-        $carro = Carro::with('marca')->get();
+        $carro = Carro::with('marcas')->get();
         return response()->json($carro, 200);
     }
 

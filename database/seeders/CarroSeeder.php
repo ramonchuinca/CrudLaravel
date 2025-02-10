@@ -13,7 +13,7 @@ class CarroSeeder extends Seeder
 
 
         // Criar uma marca
-        $marca = Marca::firstOrCreate(['nome' => 'Toyota']);
+        $marca = Marca::firstOrCreate(['nome' => 'marca_id',]);
 
         // Criar carros associados a essa marca
         Carro::create([
@@ -46,6 +46,8 @@ class CarroSeeder extends Seeder
             'cotacao' => 250000,
             'data_lancamento' => '2024-02-01'
         ]);
+
+
     }
 }
 
