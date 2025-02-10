@@ -14,6 +14,6 @@ class Carro extends Model
 
     public function marca()
     {
-        return $this->belongsTo(Marca::class, 'marca_id');
+        return $this->belongsTo(Marca::class, foreignKey: 'marca_id');
     }
 }
