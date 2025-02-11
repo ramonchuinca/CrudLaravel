@@ -12,7 +12,7 @@ class Carro extends Model
 
     protected $fillable = ['nome', 'marca_id'];
 
-    public function marca()
+    public function marcas()
     {
         return $this->belongsTo(Marca::class, foreignKey: 'marca_id');
     }

@@ -18,6 +18,7 @@ class CarroController extends Controller
     {
         $carro = Carro::with('marcas')->get();
         return response()->json($carro, 200);
+        
     }
 
 

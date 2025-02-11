@@ -8,10 +8,7 @@ use App\Models\Marca;
 class MarcaSeeder extends Seeder
 {
     public function run()
-    {
-        {
-            $this->call(MarcaSeeder::class);
-        }
+    { 
 
         $marcas = [
             ['id' => 1, 'nome' => 'Chevrolet'],
@@ -33,8 +30,5 @@ class MarcaSeeder extends Seeder
         }
 
         echo "Todas as marcas foram adicionadas com sucesso!";
-
-        }
     }
-
-
+}
