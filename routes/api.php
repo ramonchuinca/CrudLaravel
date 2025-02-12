@@ -4,6 +4,8 @@
 use App\Http\Controllers\Api\CarroController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\MarcaController;
+use App\Models\Marca;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/carros', [CarroController::class, 'index']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/carros', [CarroController::class, 'index']);
-
-
+Route::apiResource('marcas', MarcaController::class);
+// Route::get('/marca/{id}/carro', [CarroController::class, 'listarCarrosPorMarca']);
+// Route::get('/marca', [MarcaController::class, 'index']);
 
 Route::prefix('carro')->group(function () { # http://localhost:8000/api/cars
     Route::get('/', [CarroController::class, 'index']); // Listar todos os carros
@@ -33,4 +37,11 @@ Route::prefix('carro')->group(function () { # http://localhost:8000/api/cars
 });
 
 
-Route::get('/marca/{id}/cars', [CarroController::class, 'listarCarrosPorMarca']);
+
+// Route::prefix('marca')->group(function () { # http://localhost:8000/api/cars
+//     Route::get('/', [MarcaController::class, 'index']); // Listar todos os carros
+//     Route::post('/', [MarcaController::class, 'store']); // Criar um novo carro
+//     Route::get('{id}', [MarcaController::class, 'show']); // Exibir detalhes de um carro
+//     Route::put('{id}', [MarcaController::class, 'update']); // Atualizar um carro
+//     Route::delete('{id}', [MarcaController::class, 'destroy']); // Excluir um carro
+// });

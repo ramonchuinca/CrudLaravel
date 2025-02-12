@@ -18,7 +18,7 @@ class CarroController extends Controller
     {
         $carro = Carro::with('marcas')->get();
         return response()->json($carro, 200);
-        
+
     }
 
 
@@ -35,7 +35,7 @@ class CarroController extends Controller
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
             'marca_id' => 'required|exists:marcas,id|',
-            'marca' => 'required|exists:marcas,nome',
+            'marca' => 'required|exists:marca,nome',
             'ano' => 'required|integer',
             'cotacao' => 'required|numeric',
             'data_lancamento' => 'required|date',
