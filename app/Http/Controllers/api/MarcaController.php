@@ -18,7 +18,7 @@ class MarcaController extends Controller
     {
         $validated = $request->validate([
             'nome' => 'required|unique:marcas|max:255',
-            'cpf' => 'required|max:11',
+            
         ]);
 
        return $validated;
