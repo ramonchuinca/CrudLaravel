@@ -24,7 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('marcas', MarcaController::class);
+Route::apiResource('marca', MarcaController::class);
+
 
 Route::prefix('carro')->group(function () { # http://localhost:8000/api/cars
     Route::get('/', [CarroController::class, 'index']); // Listar todos os carros
