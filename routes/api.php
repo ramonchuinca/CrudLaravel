@@ -18,7 +18,9 @@ use App\Models\Marca;
 |
 */
 
-Route::get('/carros', [CarroController::class, 'index']);
+Route::put('/carros/{id}', [CarroController::class, 'update']);
+Route::apiResource('carro', CarroController::class);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

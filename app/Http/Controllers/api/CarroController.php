@@ -97,6 +97,7 @@ class CarroController extends Controller
 
         $carro->update($validatedData);
 
+
         return response()->json(['message' => 'Carro atualizado com sucesso!', 'carro' => $carro]);
     }
 

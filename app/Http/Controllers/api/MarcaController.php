@@ -33,6 +33,8 @@ class MarcaController extends Controller
         return response()->json($marca);
     }
 
+
+
     public function update(Request $request, Marca $marca)
     {
         $request->validate([
@@ -43,6 +45,9 @@ class MarcaController extends Controller
 
         return response()->json(['message' => 'Marca atualizada com sucesso.', 'marca' => $marca]);
     }
+
+
+
 
     public function destroy(Marca $marca)
     {
